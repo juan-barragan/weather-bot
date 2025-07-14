@@ -5,7 +5,7 @@ import asyncio
 
 # Create your views here.
 class BotView(View):
-    def post(self, request):
+    async def post(self, request):
         user_message = request.POST.get('message', '')
         if not user_message:
             context = {
@@ -13,7 +13,7 @@ class BotView(View):
             }
             return render(request, 'main.html', context)
         try:
-            bot_response = asyncio.run(query_agent(user_message))
+            bot_response = await query_agent(user_message)
         except Exception as e:
             bot_response = f"An error occurred: {str(e)}"
         context = {

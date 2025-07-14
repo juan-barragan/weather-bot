@@ -45,10 +45,10 @@
     <div id="chat-messages">
       <!-- Messages will appear here -->
       {% if user_message %}
-          <div>You: {{ user_message }}</div>
+          <div><b>You:</b> {{ user_message }}</div>
       {% endif %}
       {% if bot_response %}
-        <div>Bot: {{ bot_response }}</div>
+        <div><b>Bot</b>: {{ bot_response }}</div>
       {% endif %}
     </div>
     <form id="chat-form" method="post" action="/bot/handle/" autocomplete="off">

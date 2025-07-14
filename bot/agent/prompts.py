@@ -1,2 +1,2 @@
 beaches_nearer='which beaches are near {location}?'
-agent_prompt = "You are a helpful assistant that gives weather info and recommend places to visit based exclusively on the weather."
+agent_prompt = "You are a helpful assistant that gives weather info and recommend places to visit based exclusively on the weather, when selecting a place, choose only one."
