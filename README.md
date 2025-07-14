@@ -14,7 +14,7 @@ A Django-based chatbot web application that provides weather information and sug
 
 1. **Clone the repository:**
    ```sh
-   git clone <your-repo-url>
+   git clone https://github.com/juan-barragan/weather-bot.git
    cd weather_bot
    ```
 
