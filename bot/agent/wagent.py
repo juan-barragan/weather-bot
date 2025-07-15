@@ -12,7 +12,17 @@ def weather_info(location: str) -> str:
     response = requests.get(url)
     return response.json()
 
+def most_hot_city() -> str:
+    candidates = ['Amsterdam', 'Paris', 'London', 'Berlin', 'Palermo', 'Madrid']
+    print('I was indeed called')
+    weather_info_city = []
+    for city in candidates:
+        weather_json = weather_info(city)
+        temp_in_city = weather_json['main']['temp']
+        weather_info_city.append( (temp_in_city, city) )
 
+    weather_info_city.sort(reverse=True)
+    return weather_info_city[0][1]  
 
 def beaches_near(location: str) -> str:
     client = openai.OpenAI(
@@ -30,8 +40,8 @@ def beaches_near(location: str) -> str:
 # Create an agent workflow with our calculator tool
 def build_agent():
     agent = FunctionAgent(
-        tools=[beaches_near, weather_info],
-        llm=OpenAI(model="gpt-4o-mini"),
+        tools=[weather_info, most_hot_city, beaches_near],
+        llm=OpenAI(api_key=settings.OPENAI_KEY, model="gpt-4o-mini"),
         system_prompt = agent_prompt,
     )
     return agent
